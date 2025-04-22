@@ -1,0 +1,43 @@
+@import '../common.css';
+
+/* Footer styles */
+.footer {
+  background-color: #F5F5DC; /* Fondo amarillo */
+  padding: 20px 0; /* Espaciado superior e inferior */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre texto e íconos */
+  align-items: center;
+  color: #333; /* Color del texto */
+  font-family: 'Bebas Neue', sans-serif; /* Fuente genérica */
+  font-size: 30px; /* Tamaño del texto */
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Centrado horizontal */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre texto e íconos */
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0; /* Sin márgenes */
+  font-weight: bold; /* Negrita */
+}
+
+.social {
+  display: flex;
+  gap: 20px; /* Espaciado entre los íconos */
+}
+
+.social a {
+  color: black; /* Color inicial de los íconos */
+  font-size: 30px; /* Tamaño de los íconos */
+  transition: transform 0.2s ease, color 0.3s ease; /* Efecto al pasar el mouse */
+}
+
+.social a:hover {
+  color: #e57300; /* Cambia a naranja en hover */
+  transform: scale(1.8); /* Efecto de agrandar */
+}

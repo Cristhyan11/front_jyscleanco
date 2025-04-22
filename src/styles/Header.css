@@ -1,0 +1,114 @@
+@import '../common.css';
+
+/* Header styles */
+
+/* Search Input */
+.search-input {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Search Button */
+.search-button {
+  background: #A5D6A7;
+  color: #332f2c;
+  padding: 10px 20px;
+  font-family: 'Bebas Neue';
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-button:hover {
+  background: #e0a800; /* Darker shade for hover effect */
+}
+.header-section {
+  background-color: #F5F5DC; /* Fondo oscuro */
+  padding: 10px 30px;
+  color: #FFC300; /* Color amarillo del texto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  max-width: 200px; /* Tamaño del logo */
+  height: auto;
+}
+
+.slogan {
+  font-size: 0.9rem;
+  color: white;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px; 
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #f4f4f4;
+  border: none;
+  color: #332f2c;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  transition: color 0.3s;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-link i {
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  background: #ddd;
+  color: #333;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #FFC300;
+  margin: 5px auto 0 auto;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}

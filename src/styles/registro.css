@@ -1,0 +1,127 @@
+/* Aumentar el tamaño del contenedor principal */
+.ai-agent-form {
+    width: 80%; /* Ancho del formulario */
+    max-width: 900px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar */
+    padding: 20px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    font-size: 1.2rem; /* Aumenta el tamaño del texto */
+    font-family: 'Lato', sans-serif;
+}
+.form-container {
+    display: block;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    background-image: url('/src/assets/J.png'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-repeat: no-repeat; /* No repite la imagen */
+    font-family: 'Lato', sans-serif;
+}
+
+/* Aumentar el espacio entre columnas */
+.form-columns {
+    display: flex;
+    gap: 30px; /* Aumentar el espacio entre columnas */
+    justify-content: space-between;
+}
+
+/* Aumentar el tamaño de las columnas */
+.column {
+    flex: 1;
+}
+
+/* Aumentar el tamaño de los campos de entrada */
+.form-group input,
+.form-group select {
+    width: 100%; /* Hacer que ocupen todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    font-size: 1.1rem; /* Tamaño de texto */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+}
+
+/* Estilo para etiquetas */
+.form-group label {
+    font-size: 1.1rem; /* Aumentar el tamaño de las etiquetas */
+    margin-bottom: 5px;
+    display: block; /* Asegura que estén separadas de los inputs */
+}
+
+/* Aumentar el botón de envío */
+.submit-button {
+    width: 100%; /* Ocupa todo el ancho del formulario */
+    padding: 15px; /* Mayor espacio interno */
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 1.2rem; /* Tamaño del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el modal */
+.modal1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Ancho responsivo */
+    max-width: 500px; /* Máximo ancho */
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra */
+    z-index: 1000; /* Colocarlo por encima de otros elementos */
+    font-family: 'Bebas Neue', sans-serif; /* Fuente del formulario */
+    text-align: center; /* Centrar el contenido */
+}
+
+/* Estilo para el overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 999; /* Debajo del modal */
+}
+
+/* Contenido del modal */
+.modal-content h2 {
+    font-size: 1.8rem; /* Tamaño del título */
+    margin-bottom: 10px;
+    color: #333333; /* Color del texto */
+}
+
+.modal-content p {
+    font-size: 1.2rem; /* Tamaño del texto */
+    margin-bottom: 20px;
+    color: #666666; /* Color del texto */
+}
+
+/* Botón en el modal */
+.modal-content .submit-button {
+    width: auto; /* No ocupa todo el ancho */
+    padding: 10px 20px; /* Tamaño más pequeño que el del formulario */
+    background-color: #007BFF; /* Color consistente */
+    color: white;
+    font-size: 1.2rem; /* Tamaño similar al formulario */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .submit-button:hover {
+    background-color: #0056b3;
+}

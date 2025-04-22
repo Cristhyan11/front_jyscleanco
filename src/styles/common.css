@@ -1,0 +1,32 @@
+/* Common styles for the application */
+
+.vista-ganadores-container,
+.rifa-container {
+  padding: 20px;
+  background-color: white; /* Fondo blanco */
+  border-radius: 5px; /* Esquinas redondeadas */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra */
+}
+
+h2 {
+  font-size: 2rem; /* Tamaño de título */
+  margin-bottom: 15px; /* Margen abajo */
+}
+
+.header-section {
+  background-color: #221e1e; /* Fondo del encabezado */
+  padding: 20px 0; /* Espaciado superior e inferior */
+  color: #ffffff; /* Color del texto */
+  text-align: center; /* Centrar el texto */
+}
+
+.footer {
+  background-color: #fce400; /* Fondo amarillo */
+  padding: 20px 0; /* Espaciado superior e inferior */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre texto e íconos */
+  align-items: center;
+  color: black; /* Color del texto */
+  font-family: 'Bebas Neue', sans-serif; /* Fuente genérica */
+  font-size: 14px; /* Tamaño del texto */
+}
