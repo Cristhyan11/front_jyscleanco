@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React, { useState } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import Carrito from './pages/Car';
 import Home from './pages/home';
 import Login from './pages/login';
@@ -11,16 +11,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/App.css';
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
+function AppContent({ handleLoginSuccess }) {
+  const location = useLocation();
+  const hideHeaderFooter = ["/login", "/registro", "/registrar_Admin"].includes(location.pathname);
 
   return (
-    <Router>
-      <Header />
+    <>
+      {!hideHeaderFooter && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -30,7 +27,21 @@ function App() {
         <Route path="/list" element={<ProductsList />} />
         <Route path="/car" element={<Carrito />} />
       </Routes>
-      <Footer />
+      {!hideHeaderFooter && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <Router>
+      <AppContent handleLoginSuccess={handleLoginSuccess} />
     </Router>
   );
 }

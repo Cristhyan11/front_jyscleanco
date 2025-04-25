@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import '../styles/registro.css';
+import ciudadesPorApartamento from '../data/colombia.json';
 
 Modal.setAppElement('#root');
 
@@ -81,18 +82,26 @@ function Registro() {
     setCiudad('');
   };
 
-  const ciudadesPorApartamento = {
-    Amazonas: ['Leticia', 'Puerto Nariño'],
-    Antioquia: ['Medellín', 'Envigado', 'Itagüí'],
-    Cundinamarca: ['Bogotá', 'Soacha', 'Chía'],
-    ValleDelCauca: ['Cali', 'Palmira', 'Tuluá'],
-  };
+  // Transform colombia.json array into an object mapping departamentos to ciudades
+  const departamentosYCiudades = ciudadesPorApartamento.reduce((acc, item) => {
+    acc[item.departamento] = item.ciudades;
+    return acc;
+  }, {});
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="ai-agent-form">
-        <h2 className="form-title">Digita Tus Datos y Gana</h2>
-
+      <button className="back-button" onClick={() => navigate('/')}>
+      <span className="back-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8.004" height="13.988" viewBox="0 0 8.004 13.988">
+              <path d="M281.016,113a1,1,0,0,1-.707-1.707l5.3-5.293-5.293-5.293a1,1,0,0,1,1.414-1.414l6,6a1,1,0,0,1,0,1.414l-6,6a1,1,0,0,1-.711.293"
+                transform="translate(288.02 113) rotate(180)" fill="#187385"></path>
+            </svg>
+          </span>
+          <span>Volver</span>
+        </button>
+      <img src="/src/assets/logo-login.png" alt="Logo" className="logo" />
+        <h2 className="form-title">Crea una cuenta</h2>
         <div className="form-group">
           <label htmlFor="nombre">Nombre y apellido</label>
           <input
@@ -156,7 +165,7 @@ function Registro() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="apartamento">Apartamento</label>
+          <label htmlFor="apartamento">Departamento</label>
           <select
             id="apartamento"
             name="apartamento"
@@ -165,7 +174,7 @@ function Registro() {
             required
           >
             <option value="">Seleccione</option>
-            {Object.keys(ciudadesPorApartamento).map((region) => (
+            {Object.keys(departamentosYCiudades).map((region) => (
               <option key={region} value={region}>
                 {region}
               </option>
@@ -183,7 +192,7 @@ function Registro() {
             required
           >
             <option value="">Seleccione</option>
-            {ciudadesPorApartamento[apartamento]?.map((city, index) => (
+            {departamentosYCiudades[apartamento]?.map((city, index) => (
               <option key={index} value={city}>
                 {city}
               </option>
@@ -214,15 +223,28 @@ function Registro() {
             required
           />
         </div>
-        <button type="submit" className="submit-button">
-          Registrarse
-        </button>
+
         <div className="form-group">
           <label htmlFor="recaptcha">Verificación</label>
           <div
             className="g-recaptcha"
             data-sitekey="6LdV0v4qAAAAAJQDgJRcnN1bWzpHvgqpXXEK9Q3B"
           ></div>
+        </div>
+
+        <button type="submit" className="submit-button">
+          Registrarse
+        </button>
+
+        <div className="login-redirect">
+          ¿Ya tienes una cuenta?{' '}
+        <span
+          className="login-link"
+          onClick={() => navigate('/login')}
+          style={{ color: '#187385', cursor: 'pointer', textDecoration: 'underline' }}
+        >
+        Inicia sesión
+        </span>
         </div>
       </form>
 

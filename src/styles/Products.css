@@ -16,7 +16,7 @@
 
 .slick-prev:before,
 .slick-next:before {
-  color: #8BC34A; /* Updated to match the new color scheme */
+  color: #105965; 
 }
 
 .slick-dots li.slick-active button:before {
@@ -24,7 +24,7 @@
 }
 
 .slick-dots li button:before {
-  color: #A5D6A7; /* Updated to match the new color scheme */
+  color: #105965; 
 }
 .producto img {
   max-width: 100%;
@@ -37,7 +37,7 @@
   font-size: 1.2rem;
   font-family: 'Lato', sans-serif;
   margin-bottom: 10px;
-  color: #332f2c; /* Cambia el color de los títulos de los productos */
+  color: #332f2c; 
 }
 
 .producto p {
