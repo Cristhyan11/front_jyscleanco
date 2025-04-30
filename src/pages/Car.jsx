@@ -10,10 +10,12 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/car?user_id=${user_id}`);
+        // Obtener los datos del carrito con detalles de productos
+        const response = await fetch(`http://localhost:5000/api/carrito?user_id=${user_id}`);
         const result = await response.json();
+
         if (result.status === 'Success') {
-          setCartItems(result.data);
+          setCartItems(result.data); // Los datos ya incluyen los detalles del producto
         } else {
           console.error('Error al obtener productos del carrito:', result.message);
         }
@@ -25,14 +27,24 @@ const Cart = () => {
     fetchCartItems();
   }, [user_id]);
 
-  const removeItem = async (id) => {
+  const removeItem = async (producto_id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/car/${id}`, {
+      // Realizar la solicitud DELETE con el producto_id en la URL
+      const response = await fetch(`http://localhost:5000/api/carrito/${producto_id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+  
       const result = await response.json();
       if (result.status === 'Success') {
-        setCartItems(cartItems.filter(item => item._id !== id));
+        // Actualizar el estado del carrito eliminando el producto
+        setCartItems(cartItems.filter(item => item.producto_id !== producto_id));
+      } else if (result.status === 'NotFound') {
+        console.warn('El producto no se encontró en el carrito:', result.message);
+      } else if (result.status === 'InvalidID') {
+        console.error('El producto_id no es válido:', result.message);
       } else {
         console.error('Error al eliminar producto del carrito:', result.message);
       }
@@ -56,7 +68,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
-      <button onClick={() => navigate('/list')} className="checkout-btn">Volver a la tienda</button> {/* Botón para regresar a la tienda */}
+      <button onClick={() => navigate('/list')} className="checkout-btn">Volver a la tienda</button>
     </section>
   );
 };
