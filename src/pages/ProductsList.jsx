@@ -21,6 +21,7 @@ const ProductsList = () => {
         const response = await fetch('http://localhost:5000/api/productos'); // Cambia la URL según tu API
         const result = await response.json();
         if (result.status === 'Success') {
+          console.log(result.data); // Verifica los datos obtenidos
           setProducts(result.data); // Asignar los productos obtenidos
         } else {
           console.error('Error al obtener productos:', result.message);
@@ -29,7 +30,7 @@ const ProductsList = () => {
         console.error('Error al obtener productos:', error);
       }
     };
-
+  
     fetchProducts();
   }, []);
 
@@ -81,11 +82,11 @@ const ProductsList = () => {
         <div className="productos-grid">
           {products.map((product) => (
             <div className="producto" key={product._id}>
-              <img
-                src={`http://localhost:5000/images/${product.image}`} // Ajusta la URL según tu backend
-                alt={product.nombre}
-                className="producto-imagen"
-              />
+            <img
+              src={product.image} // Usa directamente la URL de Cloudinary
+              alt={product.nombre}
+              className="producto-imagen"
+            />
               <h4 className="producto-nombre">{product.nombre}</h4>
               <p className="producto-precio">Precio: ${product.precio}</p>
               <p className="producto-descripcion">{product.description}</p>
