@@ -83,7 +83,7 @@ const ProductsList = () => {
           {products.map((product) => (
             <div className="producto" key={product._id}>
             <img
-              src={product.image} // Usa directamente la URL de Cloudinary
+              src={product.image} 
               alt={product.nombre}
               className="producto-imagen"
             />

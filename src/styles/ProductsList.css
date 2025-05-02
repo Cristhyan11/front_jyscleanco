@@ -1,34 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 .productos-lista {
   padding: 20px;
   text-align: center;
-  color: #4A4A4A; /* Updated to a lighter shade */
-  font-family: 'Lato', sans-serif;
+  color: #4A4A4A; 
+  font-family: "Poppins", Helvetica, sans-serif;
 }
 
 .productos-lista h2 {
-  font-size: 36px;
+  font-size: 25px;
   text-align: center;
   margin-bottom: 20px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Cuatro columnas de igual tamaño */
-  gap: 20px; /* Espacio entre productos */
-  justify-content: center; /* Centrar los productos dentro del contenedor */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
+  justify-content: center; 
 }
 
 .producto {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  max-width: 300px;
+  max-width: 250px;
+  max-height: 500px;
   text-align: center;
   transition: box-shadow 0.3s;
-  font-family: 'Lato', sans-serif;
+  font-family: "Poppins", Helvetica, sans-serif;
 }
 
 .producto-imagen {
@@ -39,44 +41,63 @@
 }
 
 .producto-nombre {
-  font-family: 'Lato', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
+  font-family:"Poppins", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
   margin-bottom: 10px;
   margin: 10px 0;
 }
 
 .producto-precio {
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  color: #666;
+  font-family:"Poppins", Helvetica, sans-serif;
+  font-size: 15px;
+  color: #231f20;
+  font-weight:bolder;
+  letter-spacing: 0;
 }
 
 .producto-descripcion {
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-size: 15px;
   color: #333;
 }
 
 .add-to-cart-btn {
   font-family: 'Bebas Neue', sans-serif;
-  background-color: #8BC34A; /* Updated to a more inviting color */
+  background-color: #187385;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   transition: background-color 0.3s;
   margin-top: 10px;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #A5D6A7; /* Updated to a lighter shade of the new background color */
+  background-color: #e0a800;
 }
 
 .producto:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.go-to-cart-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: #187385;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.go-to-cart-btn:hover {
+  background-color: #e0a800;
 }
 
 .modal {
@@ -104,12 +125,12 @@
 
 @media (max-width: 768px) {
 .productos-grid {
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+    grid-template-columns: repeat(2, 1fr);
 }
 }
 
 @media (max-width: 480px) {
 .productos-grid {
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    grid-template-columns: 1fr; 
 }
 }
