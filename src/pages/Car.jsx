@@ -49,7 +49,7 @@ const Cart = () => {
         // Recargar la página después de 2 segundos
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1000);
       } else if (result.status === 'NotFound') {
         setModalMessage('El producto no se encontró en el carrito.');
         setIsModalOpen(true);
