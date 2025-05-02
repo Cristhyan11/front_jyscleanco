@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import '../styles/login.css'; // Asegúrate de que los estilos sean correctos
+import '../styles/login.css'; 
 
-Modal.setAppElement('#root'); // Para accesibilidad
+Modal.setAppElement('#root'); 
 
 function RegistrarAdmin() {
-  const [email, setEmail] = useState(''); // Cambiado a username
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +19,6 @@ function RegistrarAdmin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verificar que las contraseñas coincidan
     if (password !== confirmPassword) {
       setError('Las contraseñas no coinciden');
       return;
@@ -39,9 +38,8 @@ function RegistrarAdmin() {
       const result = await response.json();
 
       if (result.status === "Usuario registrado") {
-        // Si se registra con éxito, puedes redirigir o mostrar un mensaje
         alert('Usuario registrado con éxito');
-        navigate('/home'); // Redirige a la página de inicio o a donde desees
+        navigate('/home'); 
       } else {
         setError(result.message || 'Error al registrar el usuario');
       }
