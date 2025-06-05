@@ -19,7 +19,8 @@ const Cart = () => {
         const result = await response.json();
 
         if (result.status === 'Success') {
-          setCartItems(result.data);
+          // Aquí está el problema: la respuesta tiene una estructura diferente
+          setCartItems(result.data.items || []);
         } else {
           console.error('Error al obtener productos del carrito:', result.message);
         }
@@ -28,12 +29,15 @@ const Cart = () => {
       }
     };
 
-    fetchCartItems();
+    if (user_id) {
+      fetchCartItems();
+    }
   }, [user_id]);
 
-  const removeItem = async (producto_id) => {
+  // Función corregida para eliminar item
+  const removeItem = async (itemId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/carrito/${producto_id}`, {
+      const response = await fetch(`http://localhost:5000/api/carrito/${itemId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -42,19 +46,20 @@ const Cart = () => {
   
       const result = await response.json();
       if (result.status === 'Success') {
-        setCartItems(cartItems.filter(item => item.producto_id !== producto_id));
+        // Filtrar por el _id del item, no por user_id
+        setCartItems(cartItems.filter(item => item._id !== itemId));
         setModalMessage('Producto eliminado del carrito.');
         setIsModalOpen(true);
   
-        // Recargar la página después de 2 segundos
+        // Opcional: recargar después de 2 segundos
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 2000);
       } else if (result.status === 'NotFound') {
         setModalMessage('El producto no se encontró en el carrito.');
         setIsModalOpen(true);
       } else if (result.status === 'InvalidID') {
-        setModalMessage('El producto_id no es válido.');
+        setModalMessage('El ID del producto no es válido.');
         setIsModalOpen(true);
       } else {
         setModalMessage('Error al eliminar producto del carrito.');
@@ -66,26 +71,59 @@ const Cart = () => {
       setIsModalOpen(true);
     }
   };
+
+  // Función para calcular total
+  const calculateTotal = (precio, cantidad) => {
+    return (parseFloat(precio) * cantidad).toFixed(2);
+  };
+
+  // Función para calcular total del carrito
+  const calculateCartTotal = () => {
+    return cartItems.reduce((total, item) => {
+      return total + (parseFloat(item.producto.precio) * item.cantidad);
+    }, 0).toFixed(2);
+  };
+
   return (
     <section className="carrito">
       <h2>Tu Carrito</h2>
       <div className="cart-items">
-        {cartItems.map(item => (
-          <div className="cart-item" key={item._id}>
-            <img
-              src={item.image}
-              alt={item.nombre}
-              className="cart-item-image"
-            />
-            <h3 className="cart-item-name">{item.nombre}</h3>
-            <p className="cart-item-price">Precio unitario: ${item.precio}</p>
-            <p className="cart-item-quantity">Cantidad: {item.cantidad}</p>
-            <p className="cart-item-total">Total: ${item.total}</p>
-            <button className="remove-btn" onClick={() => removeItem(item._id)}>Eliminar</button>
-          </div>
-        ))}
+        {cartItems.length === 0 ? (
+          <p>Tu carrito está vacío</p>
+        ) : (
+          cartItems.map(item => (
+            <div className="cart-item" key={item._id}>
+              <img
+                src={item.producto.image}
+                alt={item.producto.nombre}
+                className="cart-item-image"
+              />
+              <h3 className="cart-item-name">{item.producto.nombre}</h3>
+              <p className="cart-item-price">Precio unitario: ${item.producto.precio}</p>
+              <p className="cart-item-quantity">Cantidad: {item.cantidad}</p>
+              <p className="cart-item-total">
+                Total: ${calculateTotal(item.producto.precio, item.cantidad)}
+              </p>
+              <button 
+                className="remove-btn" 
+                onClick={() => removeItem(item._id)}
+              >
+                Eliminar
+              </button>
+            </div>
+          ))
+        )}
       </div>
-      <button onClick={() => navigate('/list')} className="checkout-btn">Volver a la tienda</button>
+      
+      {cartItems.length > 0 && (
+        <div className="cart-summary">
+          <h3>Total del carrito: ${calculateCartTotal()}</h3>
+        </div>
+      )}
+      
+      <button onClick={() => navigate('/list')} className="checkout-btn">
+        Volver a la tienda
+      </button>
 
       {/* Modal de confirmación */}
       <Modal
