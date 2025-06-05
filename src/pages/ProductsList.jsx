@@ -18,7 +18,7 @@ const ProductsList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/productos'); // Cambia la URL según tu API
+        const response = await fetch('https://back-jyscleanco.vercel.app/api/productos'); // Cambia la URL según tu API
         const result = await response.json();
         if (result.status === 'Success') {
           console.log(result.data); // Verifica los datos obtenidos
@@ -42,7 +42,7 @@ const ProductsList = () => {
   const addToCart = async () => {
     if (!selectedProduct) return;
     try {
-      const response = await fetch('http://localhost:5000/api/carrito', {
+      const response = await fetch('https://back-jyscleanco.vercel.app/api/carrito', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const ProductsList = () => {
           {products.map((product) => (
             <div className="producto" key={product._id}>
             <img
-              src={product.image} // Usa directamente la URL de Cloudinary
+              src={product.image} 
               alt={product.nombre}
               className="producto-imagen"
             />

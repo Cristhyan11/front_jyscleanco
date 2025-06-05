@@ -1,13 +1,14 @@
 .productos {
   padding: 20px;
   text-align: center;
+  font-family: "Poppins", Helvetica, sans-serif;;
 }
 
 .productos h2 {
   font-size: 2.5rem;
   font-family: 'Bebas Neue', sans-serif;
   margin-bottom: 20px;
-  color: #4A4A4A; /* Updated to a lighter or more vibrant color */
+  color: #4A4A4A; 
 }
 
 .slick-slide {
@@ -20,7 +21,7 @@
 }
 
 .slick-dots li.slick-active button:before {
-  color: #FFC300; /* Active dot color */
+  color: #FFC300; 
 }
 
 .slick-dots li button:before {
@@ -35,9 +36,9 @@
 
 .producto h3 {
   font-size: 1.2rem;
-  font-family: 'Lato', sans-serif;
+  font-family: "Poppins", Helvetica, sans-serif;
   margin-bottom: 10px;
-  color: #332f2c; 
+  color: #4A4A4A;
 }
 
 .producto p {

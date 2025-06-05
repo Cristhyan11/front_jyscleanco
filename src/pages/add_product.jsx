@@ -26,7 +26,7 @@ function AgregarProducto() {
     formData.append('Fecha_agregado', new Date().toISOString());
 
     try {
-      const response = await fetch('http://localhost:5000/api/list', {
+      const response = await fetch('https://back-jyscleanco.vercel.app/api/list', {
         method: 'POST',
         body: formData,
       });

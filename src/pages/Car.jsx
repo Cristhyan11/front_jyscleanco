@@ -15,7 +15,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/carrito?user_id=${user_id}`);
+        const response = await fetch(`https://back-jyscleanco.vercel.app/api/carrito?user_id=${user_id}`);
         const result = await response.json();
 
         if (result.status === 'Success') {
@@ -37,7 +37,7 @@ const Cart = () => {
   // Función corregida para eliminar item
   const removeItem = async (itemId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/carrito/${itemId}`, {
+      const response = await fetch(`https://back-jyscleanco.vercel.app/api/carrito/${itemId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

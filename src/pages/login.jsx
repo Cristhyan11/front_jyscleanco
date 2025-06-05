@@ -13,11 +13,10 @@ function Login({ onLoginSuccess }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Cargar o recargar el script de reCAPTCHA
     const loadRecaptcha = () => {
       const existingScript = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]');
       if (existingScript) {
-        existingScript.remove(); // Eliminar el script existente
+        existingScript.remove();
       }
 
       const script = document.createElement('script');
@@ -31,18 +30,16 @@ function Login({ onLoginSuccess }) {
     };
 
     loadRecaptcha();
-  }, []); // Se ejecuta cada vez que el componente se monta
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verificar si grecaptcha está disponible
     if (typeof grecaptcha === 'undefined') {
       setModalMessage('Error al cargar reCAPTCHA. Intenta nuevamente.');
       return;
     }
 
-    // Obtener el token de reCAPTCHA
     const token = grecaptcha.getResponse();
     if (!token) {
       setModalMessage('Por favor, completa el reCAPTCHA.');
@@ -50,7 +47,7 @@ function Login({ onLoginSuccess }) {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch('https://back-jyscleanco.vercel.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, token }),
@@ -61,8 +58,9 @@ function Login({ onLoginSuccess }) {
         localStorage.setItem('user_id', result._id);
         localStorage.setItem('user', result.user);
         localStorage.setItem('role', result.role);
+        localStorage.setItem('usuario', JSON.stringify({ nombre: result.nombre }));
         if (onLoginSuccess) onLoginSuccess();
-        navigate(result.role === 'client' ? '/list' : '/ganadores');
+        navigate(result.role === 'client' ? '/list' : '/users');
       } else {
         setModalMessage(result.message || 'No es bienvenido');
       }
@@ -107,6 +105,17 @@ function Login({ onLoginSuccess }) {
           <button type="button" className="register-button" onClick={() => navigate('/registro')}>Registrarse</button>
         </form>
       </div>
+
+      <Modal
+        isOpen={modalMessage !== ''}
+        onRequestClose={() => setModalMessage('')}
+        contentLabel="Mensaje"
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <p>{modalMessage}</p>
+        <button onClick={() => setModalMessage('')}>Cerrar</button>
+      </Modal>
     </div>
   );
 }
