@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import '../styles/carrito.css';
+import '../styles/carts.css';
 
 Modal.setAppElement('#root'); // Necesario para accesibilidad
 

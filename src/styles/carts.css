@@ -1,0 +1,71 @@
+
+.carrito {
+  padding: 20px;
+  text-align: center;
+}
+
+.carrito h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #4A4A4A;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.cart-item-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.remove-btn {
+  background-color: #ff1919;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.cart-total {
+  margin-top: 20px;
+}
+
+.checkout-btn {
+  background-color: #187385;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+}
+
+.checkout-btn:hover {
+  background-color: #e0a800;
+}
