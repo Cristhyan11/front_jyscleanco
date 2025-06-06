@@ -1,25 +1,37 @@
 import React from 'react';
-import productImage1 from '../assets/jabonliquido.jpg';
-import productImage2 from '../assets/producto2.jpg';
-import productImage4 from '../assets/producto4.jpg';
-import productImage5 from '../assets/producto5.jpg';
-import productImage6 from '../assets/producto6.jpg';
-import productImage7 from '../assets/producto7.jpg';
-import productImage8 from '../assets/producto8.jpg';
-import productImage9 from '../assets/velas.jpg';
 import '../styles/Products.css';
 
-
-
 const products = [
-  { id: 1, name: 'Ambientador', price: 15000, image: productImage7 },
-  { id: 2, name: 'Limpiador multiusos', price: 12000, image: productImage8 },
-  { id: 3, name: 'Jabon Liquido Antibacterial', price: 19000, image: productImage1 },
-  { id: 4, name: 'Crema de Coco', price: 19000, image: productImage4 },
-  { id: 5, name: 'Aceite Escenciales Lavanda', price: 25000, image: productImage5 },
-  { id: 6, name: 'Productos Varios', price: 100000, image: productImage6 },
-  { id: 7, name: 'Ambientador Lavanda', price: 16000, image: productImage2 },
-  { id: 8, name: 'Velas Aromaticas', price: 12000, image: productImage9 },
+  { 
+    id: 1, 
+    name: 'Ambientador', 
+    price: 15000, 
+    image: 'https://res.cloudinary.com/dk57jmb4o/image/upload/v1746133162/Ambientador_mw5zn7.jpg' 
+  },
+  { 
+    id: 2, 
+    name: 'Limpiador multiusos', 
+    price: 12000, 
+    image: 'https://res.cloudinary.com/dk57jmb4o/image/upload/v1746133165/Limpiador_multiusos_p4lm4i.jpg' 
+  },
+  { 
+    id: 3, 
+    name: 'Jabon Liquido Antibacterial', 
+    price: 19000, 
+    image: 'https://res.cloudinary.com/dk57jmb4o/image/upload/v1746133204/Aceite_de_Cuerpo_up3ddo.jpg' 
+  },
+  { 
+    id: 4, 
+    name: 'Crema de Coco', 
+    price: 19000, 
+    image: 'https://res.cloudinary.com/dk57jmb4o/image/upload/v1746133164/Crema_de_Coco_hqwy9b.jpg' 
+  },
+  { 
+    id: 5, 
+    name: 'Aceite Escenciales Lavanda', 
+    price: 25000, 
+    image: 'https://res.cloudinary.com/dk57jmb4o/image/upload/v1745981945/producto2_ftdsj1.jpg' 
+  },
 
 ];
 
