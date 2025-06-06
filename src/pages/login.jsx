@@ -12,45 +12,14 @@ function Login({ onLoginSuccess }) {
   const [modalMessage, setModalMessage] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadRecaptcha = () => {
-      const existingScript = document.querySelector('script[src="https://www.google.com/recaptcha/api.js"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-
-      const script = document.createElement('script');
-      script.src = 'https://www.google.com/recaptcha/api.js';
-      script.async = true;
-      script.defer = true;
-      script.onerror = () => {
-        setModalMessage('Error al cargar reCAPTCHA. Intenta nuevamente.');
-      };
-      document.body.appendChild(script);
-    };
-
-    loadRecaptcha();
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (typeof grecaptcha === 'undefined') {
-      setModalMessage('Error al cargar reCAPTCHA. Intenta nuevamente.');
-      return;
-    }
-
-    const token = grecaptcha.getResponse();
-    if (!token) {
-      setModalMessage('Por favor, completa el reCAPTCHA.');
-      return;
-    }
 
     try {
       const response = await fetch('https://back-jyscleanco.vercel.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, token }),
+        body: JSON.stringify({ email, password }),
       });
 
       const result = await response.json();
@@ -92,13 +61,6 @@ function Login({ onLoginSuccess }) {
           <div className="input-group">
             <label>Contraseña</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="recaptcha">Verificación</label>
-            <div
-              className="g-recaptcha"
-              data-sitekey="6LdV0v4qAAAAAJQDgJRcnN1bWzpHvgqpXXEK9Q3B"
-            ></div>
           </div>
           <button type="submit" className="login-button">Ingresar</button>
           <a href="#" className="forgot-password">Olvidé la contraseña</a>

@@ -19,32 +19,13 @@ function Registro() {
   const [modalMessage, setModalMessage] = useState('');
   const navigate = useNavigate();
 
-  // Cargar el script de reCAPTCHA al renderizar el componente
-  useEffect(() => {
-    const loadRecaptcha = () => {
-      const script = document.createElement('script');
-      script.src = 'https://www.google.com/recaptcha/api.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    };
-
-    loadRecaptcha();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Obtener el token de reCAPTCHA
-    const token = grecaptcha.getResponse();
-    if (!token) {
-      setModalMessage('Por favor, completa el reCAPTCHA.');
-      return;
-    }
 
     // Datos del formulario
     const data = {
-      token,
       nombre,
       fechaNacimiento,
       cedula,
@@ -222,14 +203,6 @@ function Registro() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="recaptcha">Verificación</label>
-          <div
-            className="g-recaptcha"
-            data-sitekey="6LdV0v4qAAAAAJQDgJRcnN1bWzpHvgqpXXEK9Q3B"
-          ></div>
         </div>
 
         <button type="submit" className="submit-button">
